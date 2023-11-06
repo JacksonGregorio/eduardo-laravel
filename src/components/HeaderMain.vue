@@ -28,7 +28,7 @@
               <a class="nav-link" href="/register">Cadastro</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/collablogin">Colaborador</a>
+              <a class="nav-link" href="/collab/login">Colaborador</a>
             </li>
           </ul>
         </div>

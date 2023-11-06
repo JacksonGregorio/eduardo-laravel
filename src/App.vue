@@ -10,11 +10,10 @@ import { RouterLink, RouterView } from 'vue-router';
         <RouterLink to="/register"/>
         <RouterLink to="/user"/>
         <RouterLink to="/database"/>
-        <RouterLink to="/collablogin"/>
+        <RouterLink to="/collab/login"/>
         <RouterLink to="/collabuser"/>
         <RouterLink to="/collabregister"/>
       </nav>
-
   <RouterView />
 </template>
 

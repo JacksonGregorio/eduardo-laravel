@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+import axios from 'axios';
 
 export default {
   data() {
@@ -35,16 +35,16 @@ export default {
       axios
         .post('/login', data)
         .then((response) => {
-          alert('Login bem-sucedido', response.data);
+          console.log('Login bem-sucedido', response.data);
           this.$router.push('/user')
         })
         .catch((error) => {
           if (error.response) {
-            alert('Erro de resposta do servidor:', error.response.data);
+            console.log('Erro de resposta do servidor:', error.response.data);
           } else if (error.request) {
-            alert('Sem resposta do servidor')
+            console.log('Sem resposta do servidor')
           } else {
-            alert('Erro de configuração da solicitação:', error.message);
+            console.log('Erro de configuração da solicitação:', error.message);
           }
         })
     }

@@ -4,13 +4,13 @@
       <form>
         <div class="form-group">
           <label for="username">Usuário:</label>
-          <input type="text" class="form-control" id="username" v-model="name" required />
+          <input type="text" class="form-control" id="username2" v-model="name" required />
         </div>
         <div class="form-group">
           <label for="password">senha:</label>
-          <input class="form-control" type="password" id="usersenha" v-model="password" required />
+          <input class="form-control" type="password" id="usersenha2" v-model="password" required />
         </div>
-        <button type="submit" class="btn btn-primary" @click.prevent="userLogin">Login</button>
+        <button type="submit" class="btn btn-primary" @click.prevent="userLoginCollab">Login</button>
       </form>
     </div>
   </template>
@@ -26,25 +26,25 @@
       }
     },
     methods: {
-      userLogin() {
+      userLoginCollab() {
         const data = {
           name: this.name,
           password: this.password
         }
   
         axios
-          .post('/collaborator', data)
+          .post('/collab/login', data)
           .then((response) => {
-            alert('Login bem-sucedido', response.data)
-            this.$router.push('/user');
+            console.log('Login bem-sucedido', response.data)
+            this.$router.push('/collabuser');
           })
           .catch((error) => {
             if (error.response) {
-              alert('Erro de resposta do servidor:', error.response.data);
+              console.log('Erro de resposta do servidor:', error.response.data);
             } else if (error.request) {
-              alert('Sem resposta do servidor');
+              console.log('Sem resposta do servidor');
             } else {
-              alert('Erro de configuração da solicitação:', error.message);
+              console.log('Erro de configuração da solicitação:', error.message);
             }
           })
       }

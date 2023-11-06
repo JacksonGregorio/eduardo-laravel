@@ -11,7 +11,7 @@
         <input
           type="password"
           class="form-control"
-          id="senha"
+          id="password"
           v-model="userData.password"
           required
         />
@@ -21,15 +21,14 @@
         <input type="email" class="form-control" v-model="userData.email" id="email" required />
       </div>
       <div class="form-group">
-        <label for="newPosition">Cargo:{{userData.optionselect}}</label>
-        <select id="position" class="form-control" v-model="userData.optionselect" @change="userData.optionselect" required>
+        <label for="newPosition">Cargo:</label>
+        <select id="position" class="form-control" v-model="userData.position" @change="userData.position" required>
           <option value="professor">Professor</option>
           <option value="colaborador">Colaborador</option>
-          <option value="aluno">Aluno</option>
           <option value="ajudante">Ajudante</option>
         </select>
       </div>
-      <button type="submit" class="btn btn-primary" @click.prevent="registerUser">Cadastrar</button>
+      <button type="submit" class="btn btn-primary" @click.prevent="registerUserColab">Cadastrar</button>
     </form>
   </div>
 </template>
@@ -43,14 +42,14 @@ export default {
         name: '',
         email: '',
         password: '',
-        optionselect: ''
+        position: 'ajudante'
       }
     }
   },
   methods: {
-    registerUser() {
+    registerUserColab() {
       axios
-        .post('/register', this.userData)
+        .post('http://localhost:8000/api/collabregister', this.userData)
         .then((response) => {
           alert('Usuário registrado com sucesso', response.data)
         })

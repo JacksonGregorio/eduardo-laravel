@@ -17,6 +17,7 @@ import DashbordComponent from '../components/DashbordComponent.vue';
 </template>
 
 <script>
+import axios from 'axios';
 
 export default {
   components: {
@@ -24,28 +25,22 @@ export default {
   },
   data() {
     return {
-      dashboardItems: [
-        {
-          imagem: "https://miro.medium.com/v2/resize:fit:900/1*OrjCKmou1jT4It5so5gvOA.jpeg",
-          titulo: "Card nuumero 1",
-          texto: "Descrição do Card 1",
-          link: "https://www.exemplo.com/link1"
-        },
-        {
-          imagem: "https://miro.medium.com/v2/resize:fit:900/1*OrjCKmou1jT4It5so5gvOA.jpeg",
-          titulo: "Card numer 2",
-          texto: "Descrição do 2",
-          link: "https://www.exemplo.com/link2"
-        },
-        {
-          imagem: "https://miro.medium.com/v2/resize:fit:900/1*OrjCKmou1jT4It5so5gvOA.jpeg",
-          titulo: "Card numero 3",
-          texto: "Descrição do Card 3",
-          link: "https://www.exemplo.com/link3"
-        }
-      ]
-    };
+      dashboardItems: []
+    }
+  },
+  mounted() {
+    this.getUsers()
+  },
+  methods: {
+    async getUsers() {
+      let response = await axios.get('/postDashes')
+      if (response.status == 200) {
+        console.log(response.data)
+        this.dashboardItems = response.data.postDashes
+      } else {
+        console.log('error no get api')
+      }
+    }
   }
-};
-
+}
 </script>

@@ -45,7 +45,7 @@ const router = createRouter({
       component: DatabaseView
     },
     {
-      path : '/collablogin',
+      path : '/collab/login',
       name : 'collablogin',
       component: LoginCollab
     },
