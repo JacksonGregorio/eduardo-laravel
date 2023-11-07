@@ -49,7 +49,7 @@ export default {
   methods: {
     registerUserColab() {
       axios
-        .post('http://localhost:8000/api/collabregister', this.userData)
+        .post('/collabregister', this.userData)
         .then((response) => {
           alert('Usuário registrado com sucesso', response.data)
         })
