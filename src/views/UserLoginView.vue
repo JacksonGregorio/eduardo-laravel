@@ -31,16 +31,28 @@ export default {
   mounted() {
     this.getUsers()
   },
-  methods: {
-    async getUsers() {
-      let response = await axios.get('/postDashes')
-      if (response.status == 200) {
-        console.log(response.data)
-        this.dashboardItems = response.data.postDashes
-      } else {
-        console.log('error no get api')
-      }
-    }
+  created() {
+  const storedToken = localStorage.getItem('token');
+  if (storedToken) {
+    axios.defaults.headers.common['Authorization'] = `Bearer ${storedToken}`;
   }
+},
+  methods: {
+        async getUsers() {
+            try {
+                let response = await axios.get('/postDashes');
+                if (response.status === 200) {
+                    console.log(response.data);
+                    this.dashboardItems = response.data.postDashes;
+                } else {
+                    this.$router.push('/Unauthorized');
+                }
+            } catch (error) {
+                console.error("Error fetching data:", error);
+                this.$router.push('/Unauthorized');
+            }
+        }
+        
+    }
 }
 </script>

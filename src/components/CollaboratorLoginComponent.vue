@@ -36,6 +36,9 @@
           .post('/collab/login', data)
           .then((response) => {
             console.log('Login bem-sucedido', response.data)
+            localStorage.setItem('collaborators', JSON.stringify(response.data));
+            localStorage.setItem('token', response.data.token);
+          axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.token}`;
             this.$router.push('/collabuser');
           })
           .catch((error) => {

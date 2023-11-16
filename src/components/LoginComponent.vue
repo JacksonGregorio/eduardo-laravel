@@ -35,8 +35,13 @@ export default {
       axios
         .post('/login', data)
         .then((response) => {
+          localStorage.setItem('user', JSON.stringify(response.data));
+          localStorage.setItem('token', response.data.token);
+          axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.token}`;
           console.log('Login bem-sucedido', response.data);
+          alert('Login bem-sucedido', response.data);
           this.$router.push('/user')
+          
         })
         .catch((error) => {
           if (error.response) {

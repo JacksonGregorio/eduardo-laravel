@@ -7,7 +7,8 @@ import DatabaseView from '../views/DatabaseView.vue';
 import LoginCollab from '../views/LoginCollaboratorView.vue';
 import Collabusar from '../views/CollaboratorView.vue';
 import Collabregister from '../views/RegisterCollaboratorView.vue';
-import Postcreate from '../views/PostcreateView.vue'
+import Postcreate from '../views/PostcreateView.vue';
+import Unauthorized from '../views/UnauthorizedView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -64,6 +65,11 @@ const router = createRouter({
       path:'/postcreate',
       name: 'postcreate',
       component : Postcreate
+    },
+    {
+      path:'/Unauthorized',
+      name: 'Unauthorized',
+      component : Unauthorized
     }
   ]
 })
